@@ -67,7 +67,7 @@
       border-radius: calc(var(--radius) + 8px);
       overflow:hidden;
       border:1px solid var(--line);
-      background: rgba(0,0,0,.35);
+      background: rgba(0,0,0,.15);
       box-shadow: var(--shadow);
       min-height: 68vh;
     }
@@ -80,9 +80,14 @@
       opacity:.55;
     }
     .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(7,7,8,.92) 0%, rgba(7,7,8,.75) 45%, rgba(7,7,8,.55) 100%);
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg,
+    rgba(7,7,8,.45) 0%,
+    rgba(7,7,8,.25) 45%,
+    rgba(7,7,8,.1) 100%);
+}
     }
     .grid{
       position:relative;
