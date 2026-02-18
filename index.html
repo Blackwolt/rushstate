@@ -1,393 +1,233 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RUSH STATE — Private Access</title>
-  <meta name="description" content="RUSH STATE. CONTROLSTATE. Private access drop." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUSH STATE — CONTROLSTATE</title>
 
-  <style>
-    :root{
-      --bg:#070708;
-      --card:rgba(255,255,255,.04);
-      --line:rgba(255,255,255,.08);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.62);
-      --soft:rgba(255,255,255,.12);
-      --accent:#ff4d1a;
-      --radius:18px;
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --max:1100px;
-    }
+<style>
+:root{
+  --bg:#0c0c0e;
+  --card:#151518;
+  --line:rgba(255,255,255,.08);
+  --text:#ffffff;
+  --muted:#9a9a9f;
+  --accent:#ff3b1f;
+  --radius:18px;
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: radial-gradient(900px 500px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
-                  radial-gradient(900px 500px at 80% 10%, rgba(255,77,26,.08), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Arial, sans-serif;
-      -webkit-font-smoothing:antialiased;
-      line-height:1.35;
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  -webkit-font-smoothing:antialiased;
+}
 
-    /* Top */
-    .top{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px;
-      padding:12px 0 18px;
-    }
-    .brand{
-      display:flex; align-items:baseline; gap:10px;
-      letter-spacing:.14em; text-transform:uppercase;
-    }
-    .brand b{font-weight:800}
-    .brand span{color:var(--muted); font-size:12px}
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.25);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      white-space:nowrap;
-    }
-    .dot{width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 14px rgba(255,77,26,.7);}
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+}
 
-    /* Hero (less dark) */
-.hero{
-  position:relative;
-  border-radius: calc(var(--radius) + 8px);
-  overflow:hidden;
+/* HEADER */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+}
+
+.logo{
+  font-weight:700;
+  letter-spacing:3px;
+}
+
+.badge{
+  padding:10px 18px;
+  border-radius:100px;
   border:1px solid var(--line);
-  background: rgba(0,0,0,.10); /* было .35 */
-  box-shadow: var(--shadow);
-  min-height: 68vh;
+  font-size:13px;
+  background:rgba(255,255,255,.04);
 }
 
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: url("hero.png") center/cover no-repeat;
-  filter: contrast(1.05) saturate(1.05);
-  transform: scale(1.03);
-  opacity: .85; /* было .55 — делаем ярче */
+/* HERO */
+.hero{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:50px;
+  border:1px solid var(--line);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
 }
 
-/* лёгкое затемнение ТОЛЬКО чтобы текст читался */
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(90deg,
-    rgba(7,7,8,.18) 0%,
-    rgba(7,7,8,.10) 45%,
-    rgba(7,7,8,.06) 100%);
+.hero h1{
+  font-size:64px;
+  line-height:1;
+  margin-bottom:20px;
 }
-    }
-    .grid{
-      position:relative;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:16px;
-      padding:28px;
-      min-height: 68vh;
-    }
 
-    /* Left side */
-    .kicker{
-      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
-      color:var(--muted);
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size:12px;
-    }
-    .title{
-      margin:14px 0 10px;
-      font-size: clamp(44px, 6vw, 72px);
-      line-height: .95;
-      letter-spacing: -0.02em;
-      font-weight: 900;
-    }
-    .sub{
-      max-width: 56ch;
-      color: rgba(255,255,255,.72);
-      font-size: 15px;
-    }
-    .priceRow{
-      display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap;
-      margin:18px 0 16px;
-    }
-    .price{
-      display:flex; align-items:baseline; gap:10px;
-      padding:10px 14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      border-radius:999px;
-    }
-    .price .num{font-size:26px; font-weight:900; letter-spacing:.02em}
-    .price .note{color:var(--muted); font-size:12px; letter-spacing:.12em; text-transform:uppercase}
-    .availability{
-      color:var(--muted);
-      font-size:12px;
-    }
+.sub{
+  color:var(--muted);
+  margin-bottom:25px;
+  font-size:18px;
+}
 
-    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 14px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:700;
-      letter-spacing:.02em;
-      cursor:pointer;
-      transition:transform .12s ease, background .12s ease, border-color .12s ease;
-    }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.14);}
-    .btnPrimary{
-      background: rgba(255,77,26,.16);
-      border-color: rgba(255,77,26,.35);
-    }
-    .btnPrimary:hover{background: rgba(255,77,26,.22); border-color: rgba(255,77,26,.5);}
+.price{
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:20px;
+}
 
-    /* Right side card */
-    .panel{
-      display:flex; flex-direction:column; gap:12px;
-    }
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius: var(--radius);
-      overflow:hidden;
-    }
-    .cardHead{
-      padding:14px 14px 10px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      border-bottom:1px solid var(--line);
-    }
-    .cardHead .tag{
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-    .cardHead .mini{
-      display:inline-flex; align-items:center; gap:8px;
-      color:var(--muted);
-      font-size:12px;
-    }
-    .divider{
-      height:1px; background:var(--line);
-      margin:0 14px;
-      opacity:.8;
-    }
-    .spec{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px 14px;
-      padding:14px;
-      font-size:13px;
-    }
-    .spec .k{
-      color:var(--muted);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size:11px;
-    }
-    .spec .v{
-      text-align:right;
-      font-weight:700;
-      color: rgba(255,255,255,.86);
-    }
+.buttons{
+  display:flex;
+  gap:15px;
+}
 
-    /* Photos */
-    .shots{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      padding:14px;
-      border-top:1px solid var(--line);
-    }
-    .shot{
-      border:1px solid var(--line);
-      border-radius: 14px;
-      overflow:hidden;
-      background: rgba(0,0,0,.22);
-      position:relative;
-    }
-    .shot img{width:100%; height:auto; display:block;}
-    .shot .cap{
-      position:absolute; left:10px; bottom:10px;
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.10);
-      color: rgba(255,255,255,.78);
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      backdrop-filter: blur(10px);
-    }
+.btn{
+  padding:14px 22px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+  border:none;
+  font-size:14px;
+}
 
-    /* Access form */
-    .form{
-      padding:14px;
-      display:grid;
-      gap:10px;
-    }
-    .input{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.25);
-      color: var(--text);
-      outline:none;
-    }
-    .input::placeholder{color: rgba(255,255,255,.45)}
-    .hint{
-      color: var(--muted);
-      font-size:12px;
-      line-height:1.35;
-    }
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+}
 
-    .foot{
-      display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
-      padding:14px 0 8px;
-      color: rgba(255,255,255,.46);
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
+.btn-secondary{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  border:1px solid var(--line);
+}
 
-    @media (max-width: 980px){
-      .grid{grid-template-columns:1fr; min-height:auto}
-      .hero{min-height:auto}
-    }
-  </style>
+/* IMAGE BLOCK */
+.image-box{
+  background:#111;
+  border-radius:var(--radius);
+  padding:20px;
+  border:1px solid var(--line);
+}
+
+.image-box img{
+  width:100%;
+  border-radius:14px;
+  display:block;
+}
+
+/* DETAILS */
+.details{
+  margin-top:60px;
+  background:var(--card);
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  padding:40px;
+}
+
+.details h2{
+  margin-bottom:30px;
+}
+
+.spec{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  row-gap:18px;
+  font-size:15px;
+}
+
+.spec div{
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+  color:var(--muted);
+}
+
+.spec div strong{
+  color:#fff;
+}
+
+/* ACCESS */
+.access{
+  margin-top:60px;
+  text-align:center;
+}
+
+.access p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    padding:30px;
+  }
+  .hero h1{
+    font-size:42px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <b>RUSH STATE</b>
-        <span>CONTROLSTATE</span>
-      </div>
-      <div class="pill"><span class="dot"></span> private access only</div>
+
+<div class="wrap">
+
+<div class="top">
+  <div class="logo">RUSH STATE</div>
+  <div class="badge">PRIVATE ACCESS ONLY</div>
+</div>
+
+<section class="hero">
+
+  <div>
+    <h1>CONTROLSTATE</h1>
+    <div class="sub">
+      Тихий запуск. Продукт открыт для просмотра.  
+      Заказ — только по доступу.
     </div>
 
-    <section class="hero">
-      <div class="grid">
-        <!-- LEFT -->
-        <div>
-          <div class="kicker">
-            <span>Premium streetwear</span>
-            <span>DE / Berlin</span>
-            <span>Drop 001</span>
-          </div>
+    <div class="price">119$ — ZIP HOODIE</div>
 
-          <div class="title">CONTROLSTATE</div>
-
-          <div class="sub">
-            Тихий запуск. Продукт открыт для просмотра. <b>Заказ — только по доступу.</b><br>
-            Цена фиксирована, без шума. Для тех, кто понимает.
-          </div>
-
-          <div class="priceRow">
-            <div class="price">
-              <div class="num">119$</div>
-              <div class="note">zip hoodie</div>
-            </div>
-            <div class="availability">Доступ на покупку открывается вручную по запросу.</div>
-          </div>
-
-          <div class="btns">
-            <a class="btn btnPrimary" href="#access">Запросить доступ</a>
-            <a class="btn" href="#details">Детали</a>
-          </div>
-
-          <div class="foot">
-            <span>Invite-only</span>
-            <span>RUSH STATE</span>
-          </div>
-        </div>
-
-        <!-- RIGHT -->
-        <div class="panel">
-          <div class="card" id="details">
-            <div class="cardHead">
-              <div class="tag">Drop 001</div>
-              <div class="mini">RS <span style="color:var(--accent); font-weight:900">01</span></div>
-            </div>
-
-            <div class="spec">
-              <div class="k">Product</div><div class="v">Black Zip Hoodie</div>
-              <div class="k">Fabric</div><div class="v">400 GSM brushed fleece</div>
-              <div class="k">Fit</div><div class="v">Slightly oversized</div>
-              <div class="k">Hardware</div><div class="v">Silver zip #5</div>
-              <div class="k">Front</div><div class="v">Light-grey embroidery + woven patch</div>
-              <div class="k">Back</div><div class="v">CONTROLSTATE (40+ cm)</div>
-              <div class="k">Price</div><div class="v">119$</div>
-              <div class="k">Order</div><div class="v">Access required</div>
-            </div>
-
-            <div class="shots">
-              <div class="shot">
-                <img src="front.png" alt="RUSH STATE Zip Hoodie front">
-                <div class="cap">front</div>
-              </div>
-              <div class="shot">
-                <img src="back.png" alt="RUSH STATE Zip Hoodie back">
-                <div class="cap">back</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" id="access">
-            <div class="cardHead">
-              <div class="tag">Request access</div>
-              <div class="mini">manual review</div>
-            </div>
-
-            <form class="form" onsubmit="event.preventDefault(); alert('Запрос отправлен. Доступ открывается вручную.');">
-              <input class="input" placeholder="Имя / ник" required />
-              <input class="input" placeholder="Email / Instagram / Telegram" required />
-              <input class="input" placeholder="Коротко: откуда ты и почему тебе нужен доступ" required />
-              <button class="btn btnPrimary" type="submit">Отправить запрос</button>
-              <div class="hint">
-                Это витрина. Оплата и оформление заказа доступны только после подтверждения доступа.
-              </div>
-            </form>
-          </div>
-
-          <!-- optional: small visual/texture (bmw.png) -->
-          <div class="card" style="border-style:dashed; opacity:.95">
-            <div class="cardHead">
-              <div class="tag">signal</div>
-              <div class="mini">low noise</div>
-            </div>
-            <div style="padding:14px; color:var(--muted); font-size:13px;">
-              <img src="bmw.png" alt="Mood" style="width:100%; border-radius:14px; border:1px solid var(--line); display:block; opacity:.9">
-              <div style="margin-top:10px; letter-spacing:.12em; text-transform:uppercase; font-size:11px;">
-                CONTROLSTATE / RUSH STATE
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+    <div class="buttons">
+      <button class="btn btn-primary">Запросить доступ</button>
+      <button class="btn btn-secondary">Детали</button>
+    </div>
   </div>
+
+  <div class="image-box">
+    <!-- ЗАМЕНИ hero.png на свою основную фото -->
+    <img src="hero.png" alt="Black Zip Hoodie">
+  </div>
+
+</section>
+
+<section class="details">
+  <h2>DROP 001 — RS 01</h2>
+
+  <div class="spec">
+    <div><strong>Product</strong></div><div>Black Zip Hoodie</div>
+    <div><strong>Fabric</strong></div><div>400 GSM brushed fleece</div>
+    <div><strong>Fit</strong></div><div>Slightly oversized</div>
+    <div><strong>Hardware</strong></div><div>Silver zip #5</div>
+    <div><strong>Front</strong></div><div>Light-grey embroidery + woven patch</div>
+    <div><strong>Back</strong></div><div>CONTROLSTATE (40+ cm)</div>
+    <div><strong>Price</strong></div><div>119$</div>
+    <div><strong>Order</strong></div><div>Access required</div>
+  </div>
+</section>
+
+<section class="access">
+  <p>
+    Доступ на покупку открывается вручную.  
+    После подтверждения вы получите возможность оформить заказ.
+  </p>
+</section>
+
+</div>
+
 </body>
 </html>
