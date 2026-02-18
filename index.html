@@ -4,350 +4,381 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>RUSH STATE — Private Access</title>
-  <meta name="description" content="RUSH STATE — premium streetwear. Private access. CONTROLSTATE." />
+  <meta name="description" content="RUSH STATE. CONTROLSTATE. Private access drop." />
+
   <style>
     :root{
       --bg:#070708;
-      --text:#ECECEF;
-      --muted:rgba(236,236,239,.68);
-      --line:rgba(236,236,239,.10);
-      --line2:rgba(236,236,239,.16);
-      --accent:#ff4d2e;
+      --card:rgba(255,255,255,.04);
+      --line:rgba(255,255,255,.08);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.62);
+      --soft:rgba(255,255,255,.12);
+      --accent:#ff4d1a;
+      --radius:18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --max:1100px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      background:
-        radial-gradient(1100px 520px at 70% 5%, rgba(255,77,46,.07), transparent 55%),
-        radial-gradient(900px 520px at 20% -10%, rgba(255,255,255,.06), transparent 60%),
-        var(--bg);
+      background: radial-gradient(900px 500px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(255,77,26,.08), transparent 60%),
+                  var(--bg);
       color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
-      letter-spacing:.2px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.35;
     }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1120px;margin:0 auto;padding:28px 18px 88px}
-    .topbar{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:10px 0 22px;
-      border-bottom:1px solid var(--line);
+    /* Top */
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:12px 0 18px;
     }
-    .mark{
-      display:flex;align-items:center;gap:10px;
-      text-transform:uppercase;
-      font-weight:650;
-      letter-spacing:1.4px;
-      font-size:13px;
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      letter-spacing:.14em; text-transform:uppercase;
     }
-    .mark .sig{
-      width:10px;height:10px;border-radius:2px;
-      background:linear-gradient(180deg, rgba(255,77,46,1), rgba(255,77,46,.65));
-      box-shadow:0 0 0 5px rgba(255,77,46,.10);
-    }
+    .brand b{font-weight:800}
+    .brand span{color:var(--muted); font-size:12px}
     .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 12px;
       border:1px solid var(--line);
+      background:rgba(0,0,0,.25);
       border-radius:999px;
-      padding:8px 12px;
-      font-size:12px;
       color:var(--muted);
+      font-size:12px;
+      letter-spacing:.12em;
       text-transform:uppercase;
-      letter-spacing:1.6px;
-      background:rgba(0,0,0,.18);
+      white-space:nowrap;
     }
+    .dot{width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 14px rgba(255,77,26,.7);}
 
+    /* Hero */
     .hero{
-      padding:60px 0 18px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .panel{
-      border:1px solid var(--line);
-      border-radius:18px;
-      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.22));
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      position:relative;
+      border-radius: calc(var(--radius) + 8px);
       overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.35);
+      box-shadow: var(--shadow);
+      min-height: 68vh;
     }
-    .panel-inner{padding:28px}
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background: url("hero.png") center/cover no-repeat;
+      filter: contrast(1.05) saturate(1.05);
+      transform: scale(1.03);
+      opacity:.55;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(90deg, rgba(7,7,8,.92) 0%, rgba(7,7,8,.75) 45%, rgba(7,7,8,.55) 100%);
+    }
+    .grid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      padding:28px;
+      min-height: 68vh;
+    }
 
+    /* Left side */
     .kicker{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
       color:var(--muted);
+      letter-spacing:.18em;
+      text-transform:uppercase;
       font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:1.8px;
     }
-    .kicker .line{height:1px;flex:1;background:var(--line);margin-left:12px}
-
-    h1{
-      margin:16px 0 10px;
-      font-size: clamp(44px, 5.2vw, 66px);
-      line-height:1.00;
-      letter-spacing:1.6px;
-      text-transform:uppercase;
+    .title{
+      margin:14px 0 10px;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: .95;
+      letter-spacing: -0.02em;
+      font-weight: 900;
     }
     .sub{
-      max-width:52ch;
+      max-width: 56ch;
+      color: rgba(255,255,255,.72);
+      font-size: 15px;
+    }
+    .priceRow{
+      display:flex; align-items:flex-end; gap:14px; flex-wrap:wrap;
+      margin:18px 0 16px;
+    }
+    .price{
+      display:flex; align-items:baseline; gap:10px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+    }
+    .price .num{font-size:26px; font-weight:900; letter-spacing:.02em}
+    .price .note{color:var(--muted); font-size:12px; letter-spacing:.12em; text-transform:uppercase}
+    .availability{
       color:var(--muted);
-      line-height:1.7;
-      font-size:15px;
-    }
-
-    .cta{
-      margin-top:26px;
-      display:flex;gap:12px;flex-wrap:wrap;
-      align-items:center;
-    }
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--line2);
-      background:rgba(0,0,0,.18);
-      font-weight:650;
-      font-size:13px;
-      letter-spacing:.6px;
-      transition:.18s ease;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn.primary{
-      border-color:rgba(255,77,46,.55);
-      background:linear-gradient(180deg, rgba(255,77,46,.95), rgba(255,77,46,.72));
-      color:#09090a;
-    }
-    .btn.primary:hover{filter:saturate(1.05)}
-    .note{
-      margin-top:14px;
-      color:rgba(236,236,239,.55);
       font-size:12px;
-      letter-spacing:.4px;
     }
 
-    .spec{
-      border-top:1px solid var(--line);
-      margin-top:26px;
-      padding-top:18px;
-      display:grid;gap:10px;
-      font-size:13px;
-      color:var(--muted);
+    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:700;
+      letter-spacing:.02em;
+      cursor:pointer;
+      transition:transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .spec .row{
-      display:flex;justify-content:space-between;gap:12px;
-      padding:10px 0;
-      border-bottom:1px solid rgba(236,236,239,.06);
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.14);}
+    .btnPrimary{
+      background: rgba(255,77,26,.16);
+      border-color: rgba(255,77,26,.35);
     }
-    .spec .row:last-child{border-bottom:0}
-    .spec b{color:var(--text);font-weight:650}
+    .btnPrimary:hover{background: rgba(255,77,26,.22); border-color: rgba(255,77,26,.5);}
 
-    .visual{
-      position:relative;
-      min-height:420px;
+    /* Right side card */
+    .panel{
+      display:flex; flex-direction:column; gap:12px;
     }
-    .visual .panel-inner{height:100%}
-    .frame{
-      border:1px solid rgba(236,236,239,.10);
-      border-radius:16px;
-      height:100%;
-      background:
-        radial-gradient(760px 260px at 40% 0%, rgba(255,255,255,.06), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.25));
-      position:relative;
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
       overflow:hidden;
     }
-    .frame::before{
-      content:"DROP 001";
-      position:absolute;top:18px;left:18px;
-      font-size:12px;color:rgba(236,236,239,.60);
-      text-transform:uppercase;letter-spacing:2px;
+    .cardHead{
+      padding:14px 14px 10px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-bottom:1px solid var(--line);
     }
-    .frame::after{
-      content:"CONTROLSTATE";
-      position:absolute;left:-18px;bottom:0px;
-      font-weight:800;
-      font-size:74px;
-      letter-spacing:3px;
-      color:rgba(236,236,239,.05);
-      transform:skewX(-10deg);
-      white-space:nowrap;
-      pointer-events:none;
-    }
-    .tiny{
-      position:absolute;right:18px;bottom:18px;
-      font-size:12px;color:rgba(236,236,239,.62);
-      letter-spacing:1px;
-      text-transform:uppercase;
-    }
-    .tiny i{
-      display:inline-block;width:7px;height:7px;border-radius:2px;
-      background:rgba(255,77,46,.95);margin-right:8px;
-      box-shadow:0 0 0 5px rgba(255,77,46,.10);
-      vertical-align:middle;
-    }
-
-    .section{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap:12px;
-    }
-    .mini{
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:rgba(0,0,0,.16);
-      padding:18px;
-    }
-    .mini h3{
-      margin:0 0 8px;
+    .cardHead .tag{
+      color:var(--muted);
       font-size:12px;
+      letter-spacing:.16em;
       text-transform:uppercase;
-      letter-spacing:2px;
-      color:rgba(236,236,239,.72);
     }
-    .mini p{
-      margin:0;
-      color:rgba(236,236,239,.62);
-      line-height:1.65;
+    .cardHead .mini{
+      display:inline-flex; align-items:center; gap:8px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .divider{
+      height:1px; background:var(--line);
+      margin:0 14px;
+      opacity:.8;
+    }
+    .spec{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px 14px;
+      padding:14px;
       font-size:13px;
     }
+    .spec .k{
+      color:var(--muted);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+    .spec .v{
+      text-align:right;
+      font-weight:700;
+      color: rgba(255,255,255,.86);
+    }
 
-    .access{
-      margin-top:18px;
+    /* Photos */
+    .shots{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      padding:14px;
       border-top:1px solid var(--line);
-      padding-top:18px;
-      display:grid;grid-template-columns: 1fr 1fr;gap:12px;
-      align-items:start;
     }
+    .shot{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(0,0,0,.22);
+      position:relative;
+    }
+    .shot img{width:100%; height:auto; display:block;}
+    .shot .cap{
+      position:absolute; left:10px; bottom:10px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.78);
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Access form */
     .form{
-      display:grid;gap:10px;
+      padding:14px;
+      display:grid;
+      gap:10px;
     }
-    input, textarea{
+    .input{
       width:100%;
       padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(236,236,239,.12);
-      background:rgba(0,0,0,.18);
-      color:var(--text);
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
       outline:none;
-      font-size:13px;
     }
-    textarea{min-height:96px;resize:vertical}
-    .foot{
-      margin-top:46px;
-      border-top:1px solid var(--line);
-      padding-top:18px;
-      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-      color:rgba(236,236,239,.55);
+    .input::placeholder{color: rgba(255,255,255,.45)}
+    .hint{
+      color: var(--muted);
       font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:1.8px;
+      line-height:1.35;
     }
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
 
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
-      .visual{min-height:320px}
-      .section{grid-template-columns:1fr}
-      .access{grid-template-columns:1fr}
+    .foot{
+      display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+      padding:14px 0 8px;
+      color: rgba(255,255,255,.46);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr; min-height:auto}
+      .hero{min-height:auto}
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <div class="topbar">
-      <div class="mark"><span class="sig"></span> RUSH STATE</div>
-      <div class="pill">Private Access</div>
+    <div class="top">
+      <div class="brand">
+        <b>RUSH STATE</b>
+        <span>CONTROLSTATE</span>
+      </div>
+      <div class="pill"><span class="dot"></span> private access only</div>
     </div>
 
-    <div class="hero">
-      <div class="panel">
-        <div class="panel-inner">
+    <section class="hero">
+      <div class="grid">
+        <!-- LEFT -->
+        <div>
           <div class="kicker">
-            <div>Premium streetwear</div>
-            <div class="line"></div>
-            <div class="mono">DE / Berlin</div>
+            <span>Premium streetwear</span>
+            <span>DE / Berlin</span>
+            <span>Drop 001</span>
           </div>
 
-          <h1>CONTROLSTATE</h1>
+          <div class="title">CONTROLSTATE</div>
+
           <div class="sub">
-            Тихий запуск. Доступ по запросу.  
-            Вещи для тех, кто знает, что делает — и не объясняет.
+            Тихий запуск. Продукт открыт для просмотра. <b>Заказ — только по доступу.</b><br>
+            Цена фиксирована, без шума. Для тех, кто понимает.
           </div>
 
-          <div class="cta">
-            <a class="btn primary" href="#access">Запросить инвайт</a>
-            <a class="btn" href="#details">Детали дропа</a>
-          </div>
-          <div class="note">
-            Сейчас страница работает как витрина. Продаж нет. Доступ открывается вручную.
-          </div>
-
-          <div class="spec" id="details">
-            <div class="row"><span>Drop 001</span><b>Black Zip Hoodie</b></div>
-            <div class="row"><span>Fabric</span><b>400 GSM brushed fleece</b></div>
-            <div class="row"><span>Fit</span><b>Slightly oversized</b></div>
-            <div class="row"><span>Hardware</span><b>Silver zip #5</b></div>
-            <div class="row"><span>Front</span><b>Light-grey embroidery + woven patch</b></div>
-            <div class="row"><span>Back</span><b>CONTROLSTATE (40+ cm)</b></div>
-            <div class="row"><span>Packaging</span><b>Matte book-box, orange inside</b></div>
+          <div class="priceRow">
+            <div class="price">
+              <div class="num">119$</div>
+              <div class="note">zip hoodie</div>
+            </div>
+            <div class="availability">Доступ на покупку открывается вручную по запросу.</div>
           </div>
 
-          <div class="access" id="access">
-            <div>
-              <div class="kicker" style="margin-bottom:10px">
-                <div>Invite request</div><div class="line"></div><div>Limited</div>
-              </div>
-              <div class="sub" style="max-width:58ch">
-                Оставь контакт — мы пришлем доступ, когда откроем окно.  
-                Чем короче и точнее сообщение, тем лучше.
-              </div>
+          <div class="btns">
+            <a class="btn btnPrimary" href="#access">Запросить доступ</a>
+            <a class="btn" href="#details">Детали</a>
+          </div>
+
+          <div class="foot">
+            <span>Invite-only</span>
+            <span>RUSH STATE</span>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="panel">
+          <div class="card" id="details">
+            <div class="cardHead">
+              <div class="tag">Drop 001</div>
+              <div class="mini">RS <span style="color:var(--accent); font-weight:900">01</span></div>
             </div>
 
-            <!-- Самый простой вариант без сервера: mailto -->
-            <form class="form" action="mailto:your@email.com" method="post" enctype="text/plain">
-              <input name="name" placeholder="Имя / ник" />
-              <input name="contact" placeholder="Email / Instagram / Telegram" />
-              <textarea name="msg" placeholder="Коротко: откуда ты и зачем тебе доступ"></textarea>
-              <button class="btn primary" type="submit">Отправить</button>
+            <div class="spec">
+              <div class="k">Product</div><div class="v">Black Zip Hoodie</div>
+              <div class="k">Fabric</div><div class="v">400 GSM brushed fleece</div>
+              <div class="k">Fit</div><div class="v">Slightly oversized</div>
+              <div class="k">Hardware</div><div class="v">Silver zip #5</div>
+              <div class="k">Front</div><div class="v">Light-grey embroidery + woven patch</div>
+              <div class="k">Back</div><div class="v">CONTROLSTATE (40+ cm)</div>
+              <div class="k">Price</div><div class="v">119$</div>
+              <div class="k">Order</div><div class="v">Access required</div>
+            </div>
+
+            <div class="shots">
+              <div class="shot">
+                <img src="front.png" alt="RUSH STATE Zip Hoodie front">
+                <div class="cap">front</div>
+              </div>
+              <div class="shot">
+                <img src="back.png" alt="RUSH STATE Zip Hoodie back">
+                <div class="cap">back</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" id="access">
+            <div class="cardHead">
+              <div class="tag">Request access</div>
+              <div class="mini">manual review</div>
+            </div>
+
+            <form class="form" onsubmit="event.preventDefault(); alert('Запрос отправлен. Доступ открывается вручную.');">
+              <input class="input" placeholder="Имя / ник" required />
+              <input class="input" placeholder="Email / Instagram / Telegram" required />
+              <input class="input" placeholder="Коротко: откуда ты и почему тебе нужен доступ" required />
+              <button class="btn btnPrimary" type="submit">Отправить запрос</button>
+              <div class="hint">
+                Это витрина. Оплата и оформление заказа доступны только после подтверждения доступа.
+              </div>
             </form>
           </div>
-        </div>
-      </div>
 
-      <div class="panel visual">
-        <div class="panel-inner">
-          <div class="frame">
-            <div class="tiny"><i></i> matte box / orange inside</div>
+          <!-- optional: small visual/texture (bmw.png) -->
+          <div class="card" style="border-style:dashed; opacity:.95">
+            <div class="cardHead">
+              <div class="tag">signal</div>
+              <div class="mini">low noise</div>
+            </div>
+            <div style="padding:14px; color:var(--muted); font-size:13px;">
+              <img src="bmw.png" alt="Mood" style="width:100%; border-radius:14px; border:1px solid var(--line); display:block; opacity:.9">
+              <div style="margin-top:10px; letter-spacing:.12em; text-transform:uppercase; font-size:11px;">
+                CONTROLSTATE / RUSH STATE
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="mini">
-        <h3>Quiet launch</h3>
-        <p>Без крика. Без скидок. Без лишних обещаний.</p>
-      </div>
-      <div class="mini">
-        <h3>Details</h3>
-        <p>Материал, фурнитура, посадка — как продукт, а не мерч.</p>
-      </div>
-      <div class="mini">
-        <h3>Access</h3>
-        <p>Окно открывается редко. Инвайты — вручную.</p>
-      </div>
-    </div>
-
-    <div class="foot">
-      <div>© <span class="mono">RUSH STATE</span></div>
-      <div class="mono">CONTROLSTATE</div>
-      <div>Private · Invite only</div>
-    </div>
+    </section>
   </div>
 </body>
 </html>
