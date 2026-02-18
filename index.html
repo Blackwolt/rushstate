@@ -3,170 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RUSH STATE — CONTROLSTATE</title>
+<title>CONTROLSTATE — RUSH STATE</title>
 
 <style>
-:root{
-  --bg:#0c0c0e;
-  --card:#151518;
-  --line:rgba(255,255,255,.08);
-  --text:#ffffff;
-  --muted:#9a9a9f;
-  --accent:#ff3b1f;
-  --radius:18px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-  -webkit-font-smoothing:antialiased;
+body {
+  background: #0b0b0c;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #ffffff;
 }
 
-.wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
+/* Контейнер */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* HEADER */
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:40px;
+/* Верх */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
 }
 
-.logo{
-  font-weight:700;
-  letter-spacing:3px;
+.logo {
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
-.badge{
-  padding:10px 18px;
-  border-radius:100px;
-  border:1px solid var(--line);
-  font-size:13px;
-  background:rgba(255,255,255,.04);
+.badge {
+  padding: 8px 16px;
+  border: 1px solid #ff3c00;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #ff3c00;
 }
 
-/* HERO */
-.hero{
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:50px;
-  border:1px solid var(--line);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
+/* Блок продукта */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
 }
 
-.hero h1{
-  font-size:64px;
-  line-height:1;
-  margin-bottom:20px;
+/* Фото */
+.images {
+  display: flex;
+  gap: 20px;
 }
 
-.sub{
-  color:var(--muted);
-  margin-bottom:25px;
-  font-size:18px;
+.images img {
+  width: 100%;
+  border-radius: 20px;
+  background: #fff;
+  padding: 20px;
 }
 
-.price{
-  font-size:32px;
-  font-weight:700;
-  margin-bottom:20px;
+/* Текст */
+.title {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-.buttons{
-  display:flex;
-  gap:15px;
+.subtitle {
+  opacity: 0.7;
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
 
-.btn{
-  padding:14px 22px;
-  border-radius:12px;
-  font-weight:600;
-  cursor:pointer;
-  border:none;
-  font-size:14px;
+.price {
+  font-size: 38px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
-.btn-primary{
-  background:var(--accent);
-  color:#fff;
+.note {
+  opacity: 0.6;
+  margin-bottom: 30px;
 }
 
-.btn-secondary{
-  background:rgba(255,255,255,.06);
-  color:#fff;
-  border:1px solid var(--line);
+.buttons {
+  display: flex;
+  gap: 20px;
 }
 
-/* IMAGE BLOCK */
-.image-box{
-  background:#111;
-  border-radius:var(--radius);
-  padding:20px;
-  border:1px solid var(--line);
+.btn-primary {
+  background: #ff3c00;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.image-box img{
-  width:100%;
-  border-radius:14px;
-  display:block;
+.btn-secondary {
+  border: 1px solid #ffffff40;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
 }
 
-/* DETAILS */
-.details{
-  margin-top:60px;
-  background:var(--card);
-  border-radius:var(--radius);
-  border:1px solid var(--line);
-  padding:40px;
+/* Характеристики */
+.specs {
+  margin-top: 60px;
+  border-top: 1px solid #ffffff20;
+  padding-top: 40px;
 }
 
-.details h2{
-  margin-bottom:30px;
+.specs div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  opacity: 0.8;
+  border-bottom: 1px solid #ffffff10;
 }
 
-.spec{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  row-gap:18px;
-  font-size:15px;
-}
-
-.spec div{
-  padding-bottom:10px;
-  border-bottom:1px solid var(--line);
-  color:var(--muted);
-}
-
-.spec div strong{
-  color:#fff;
-}
-
-/* ACCESS */
-.access{
-  margin-top:60px;
-  text-align:center;
-}
-
-.access p{
-  color:var(--muted);
-  margin-bottom:20px;
-}
-
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-    padding:30px;
+/* Мобильная версия */
+@media(max-width: 900px){
+  .hero {
+    grid-template-columns: 1fr;
   }
-  .hero h1{
-    font-size:42px;
+
+  .images {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 36px;
   }
 }
 </style>
@@ -174,58 +147,49 @@ body{
 
 <body>
 
-<div class="wrap">
+<div class="wrapper">
 
-<div class="top">
-  <div class="logo">RUSH STATE</div>
-  <div class="badge">PRIVATE ACCESS ONLY</div>
-</div>
+  <div class="header">
+    <div class="logo">RUSH STATE</div>
+    <div class="badge">PRIVATE ACCESS ONLY</div>
+  </div>
 
-<section class="hero">
+  <div class="hero">
 
-  <div>
-    <h1>CONTROLSTATE</h1>
-    <div class="sub">
-      Тихий запуск. Продукт открыт для просмотра.  
-      Заказ — только по доступу.
+    <div class="images">
+      <img src="front.png" alt="Front Hoodie">
+      <img src="back.png" alt="Back Hoodie">
     </div>
 
-    <div class="price">119$ — ZIP HOODIE</div>
+    <div>
+      <div class="title">CONTROLSTATE</div>
 
-    <div class="buttons">
-      <button class="btn btn-primary">Запросить доступ</button>
-      <button class="btn btn-secondary">Детали</button>
+      <div class="subtitle">
+        Тихий запуск. Продукт открыт для просмотра.<br>
+        Заказ — только по доступу.
+      </div>
+
+      <div class="price">119$</div>
+
+      <div class="note">
+        Доступ на покупку открывается вручную после запроса.
+      </div>
+
+      <div class="buttons">
+        <a href="#" class="btn-primary">Запросить доступ</a>
+        <a href="#" class="btn-secondary">Детали</a>
+      </div>
+
     </div>
   </div>
 
-  <div class="image-box">
-    <!-- ЗАМЕНИ hero.png на свою основную фото -->
-    <img src="hero.png" alt="Black Zip Hoodie">
+  <div class="specs">
+    <div><span>Product</span><span>Black Zip Hoodie</span></div>
+    <div><span>Fabric</span><span>400 GSM brushed fleece</span></div>
+    <div><span>Fit</span><span>Slightly oversized</span></div>
+    <div><span>Hardware</span><span>Silver zip #5</span></div>
+    <div><span>Back</span><span>CONTROLSTATE (40+ cm)</span></div>
   </div>
-
-</section>
-
-<section class="details">
-  <h2>DROP 001 — RS 01</h2>
-
-  <div class="spec">
-    <div><strong>Product</strong></div><div>Black Zip Hoodie</div>
-    <div><strong>Fabric</strong></div><div>400 GSM brushed fleece</div>
-    <div><strong>Fit</strong></div><div>Slightly oversized</div>
-    <div><strong>Hardware</strong></div><div>Silver zip #5</div>
-    <div><strong>Front</strong></div><div>Light-grey embroidery + woven patch</div>
-    <div><strong>Back</strong></div><div>CONTROLSTATE (40+ cm)</div>
-    <div><strong>Price</strong></div><div>119$</div>
-    <div><strong>Order</strong></div><div>Access required</div>
-  </div>
-</section>
-
-<section class="access">
-  <p>
-    Доступ на покупку открывается вручную.  
-    После подтверждения вы получите возможность оформить заказ.
-  </p>
-</section>
 
 </div>
 
