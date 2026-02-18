@@ -4,403 +4,436 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RUSH STATE — CONTROLSTATE</title>
-  <meta name="description" content="RUSH STATE — premium streetwear. Private access. CONTROLSTATE." />
 
   <style>
     :root{
       --bg:#070708;
-      --card:#0d0d0f;
-      --card2:#0f0f12;
-      --line:rgba(255,255,255,.08);
-      --text:#f2f2f3;
-      --muted:rgba(242,242,243,.65);
-      --muted2:rgba(242,242,243,.42);
-      --accent:#ff3b1f;
-      --radius:28px;
-      --shadow: 0 40px 90px rgba(0,0,0,.65);
+      --card: rgba(255,255,255,.05);
+      --line: rgba(255,255,255,.10);
+      --text:#EDEEF1;
+      --muted: rgba(236,236,239,.70);
+      --muted2: rgba(236,236,239,.55);
+      --orange:#ff4d1a;
+
+      --radius:18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      background: radial-gradient(900px 500px at 15% 10%, rgba(255,59,31,.10), transparent 55%),
-                  radial-gradient(900px 500px at 85% 25%, rgba(255,255,255,.05), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      font-family: -apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,Roboto,Arial,sans-serif;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
     }
-
     a{ color:inherit; text-decoration:none; }
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:24px 16px 80px;
+
+    /* Background */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(900px 520px at 85% 20%, rgba(255,77,26,.12), transparent 55%),
+        radial-gradient(900px 520px at 60% 90%, rgba(255,255,255,.06), transparent 60%);
+      pointer-events:none;
+      z-index:-2;
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url("bmw.png") center/cover no-repeat;
+      opacity:.10;
+      filter: contrast(1.05) saturate(1.05);
+      pointer-events:none;
+      z-index:-3;
     }
 
-    /* Top bar */
-    .top{
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    /* Header */
+    .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
-      padding:18px 6px 26px;
+      gap:12px;
+      padding: 18px 0 8px;
     }
-    .logo{
+    .brand{
       display:flex;
       align-items:flex-start;
-      gap:12px;
+      gap:14px;
       letter-spacing:.22em;
+      text-transform:uppercase;
       font-weight:700;
+      font-size:14px;
     }
-    .logo b{
-      display:block;
-      font-size:18px;
-      line-height:1;
-    }
-    .logo span{
-      display:block;
-      font-size:12px;
-      color:var(--muted2);
-      margin-top:6px;
-      letter-spacing:.28em;
+    .brand span{
+      display:inline-block;
+      line-height:1.05;
     }
     .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 10px 14px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(236,236,239,.82);
       display:flex;
       align-items:center;
       gap:10px;
-      padding:10px 14px;
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:999px;
-      background:rgba(255,255,255,.03);
-      font-size:12px;
-      letter-spacing:.2em;
-      color:rgba(255,255,255,.85);
       white-space:nowrap;
     }
     .dot{
-      width:8px;height:8px;border-radius:999px;
-      background:var(--accent);
-      box-shadow:0 0 0 6px rgba(255,59,31,.10);
+      width:8px;height:8px;border-radius:999px;background:var(--orange);
+      box-shadow: 0 0 16px rgba(255,77,26,.45);
     }
 
     /* HERO */
     .hero{
       position:relative;
-      border-radius: calc(var(--radius) + 8px);
+      margin-top: 12px;
+      border-radius: calc(var(--radius) + 10px);
       overflow:hidden;
       border:1px solid var(--line);
-      background: rgba(0,0,0,.28);
+      background: rgba(0,0,0,.25);
       box-shadow: var(--shadow);
     }
+
+    /* Никакого затемняющего слоя справа/слева */
     .hero::before{
       content:"";
-      position:absolute; inset:0;
-      background:url("bmw.png") center/cover no-repeat;
-      filter: contrast(1.05) saturate(1.05);
-      opacity:.40; /* фон виден, но не убивает текст */
-      transform: scale(1.03);
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 520px at 10% 10%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(900px 520px at 90% 30%, rgba(255,77,26,.12), transparent 55%);
+      pointer-events:none;
     }
-    /* ВАЖНО: затемнение РОВНОЕ, чтобы текст был четкий */
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg,
-        rgba(7,7,8,.88) 0%,
-        rgba(7,7,8,.78) 45%,
-        rgba(7,7,8,.88) 100%);
-    }
+
     .grid{
       position:relative;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:20px;
-      padding:34px;
-      min-height: 66vh;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      padding: 26px;
+      min-height: 64vh;
+      align-items: stretch;
     }
 
     .kicker{
       display:flex;
-      gap:18px;
       flex-wrap:wrap;
+      gap:10px;
       align-items:center;
-      margin-bottom:18px;
-      color:rgba(255,255,255,.70);
-      font-size:12px;
-      letter-spacing:.28em;
+      color: rgba(236,236,239,.78);
+      font-size: 12px;
+      letter-spacing:.18em;
       text-transform:uppercase;
+      margin-bottom: 10px;
     }
-    .kicker .sep{ opacity:.35; }
+    .sep{ opacity:.55; }
 
     h1{
-      margin:0;
-      font-size:64px;
-      letter-spacing:.06em;
-      line-height:1.02;
-      text-transform:uppercase;
+      margin: 8px 0 12px;
+      font-size: clamp(44px, 6vw, 74px);
+      line-height: .95;
+      letter-spacing: .02em;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.35);
     }
+
     .lead{
-      margin:18px 0 0;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.65;
-      max-width: 560px;
+      margin: 0 0 16px;
+      color: rgba(236,236,239,.78);
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 520px;
     }
 
     .price{
-      margin:26px 0 0;
       display:flex;
-      align-items:center;
-      gap:16px;
-      flex-wrap:wrap;
+      align-items:baseline;
+      gap:12px;
+      margin: 18px 0 18px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      width: fit-content;
     }
     .price strong{
-      font-size:34px;
-      letter-spacing:.04em;
+      font-size: 34px;
+      letter-spacing: .01em;
+      color: #fff;
     }
     .price span{
-      color:rgba(255,255,255,.70);
-      letter-spacing:.20em;
+      letter-spacing:.18em;
       text-transform:uppercase;
-      font-size:14px;
+      color: rgba(236,236,239,.70);
+      font-size: 12px;
     }
 
     .cta{
-      margin-top:26px;
       display:flex;
-      gap:14px;
+      gap:12px;
       flex-wrap:wrap;
-    }
-    .btn{
-      border:none;
-      border-radius:16px;
-      padding:14px 22px;
-      font-size:16px;
-      cursor:pointer;
-      transition: transform .12s ease, opacity .12s ease;
-      user-select:none;
-    }
-    .btn:active{ transform: scale(.98); }
-    .btnPrimary{
-      background: var(--accent);
-      color:white;
-      box-shadow: 0 18px 40px rgba(255,59,31,.25);
-    }
-    .btnGhost{
-      background: rgba(255,255,255,.06);
-      color: white;
-      border:1px solid rgba(255,255,255,.14);
+      margin-top: 6px;
     }
 
-    /* Right card */
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:#fff;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
+    .btn:active{ transform: translateY(0px); }
+
+    .btnPrimary{
+      background: rgba(255,77,26,.92);
+      border-color: rgba(255,77,26,.75);
+      box-shadow: 0 12px 30px rgba(255,77,26,.18);
+    }
+    .btnPrimary:hover{
+      background: rgba(255,77,26,1);
+      border-color: rgba(255,77,26,.9);
+    }
+
+    .btnGhost{
+      background: rgba(255,255,255,.03);
+    }
+
+    .note{
+      margin: 14px 0 0;
+      color: rgba(236,236,239,.62);
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 520px;
+    }
+
     .side{
       display:flex;
       flex-direction:column;
-      gap:14px;
-      justify-content:flex-start;
+      gap:12px;
     }
+
     .card{
-      background: rgba(13,13,15,.85);
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
       border-radius: var(--radius);
       overflow:hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
+
     .cardHead{
-      padding:18px 18px 12px;
       display:flex;
-      justify-content:space-between;
       align-items:center;
-      gap:10px;
+      justify-content:space-between;
+      padding: 14px 14px 10px;
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
     .tag{
-      font-size:12px;
-      letter-spacing:.22em;
+      font-size: 12px;
+      letter-spacing:.18em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.70);
+      color: rgba(236,236,239,.78);
     }
     .hint{
-      font-size:12px;
-      color:rgba(255,255,255,.55);
+      font-size: 12px;
+      color: rgba(236,236,239,.55);
       letter-spacing:.06em;
     }
-    .cardBody{ padding:0 18px 18px; }
+    .cardBody{
+      padding: 14px;
+    }
+
     .model{
-      border-radius: 22px;
+      border-radius: calc(var(--radius) - 2px);
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background:#0b0b0d;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.06);
     }
     .model img{
       display:block;
       width:100%;
       height:auto;
     }
+
     .caption{
-      padding:12px 2px 0;
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.45);
+      margin-top: 10px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(236,236,239,.62);
     }
 
     /* Sections */
     .section{
-      margin-top:26px;
-    }
-
-    /* Product table card */
-    .spec{
-      padding:26px;
-      border-radius: var(--radius);
-      background: var(--card);
+      margin-top: 16px;
       border:1px solid var(--line);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      background: rgba(255,255,255,.03);
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: 0 10px 50px rgba(0,0,0,.28);
+      overflow:hidden;
     }
-    .specTitle{
-      font-size:26px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      margin:0 0 14px;
-    }
-    .specGrid{
-      margin-top:18px;
-      border-top:1px solid var(--line);
-    }
-    .row{
-      display:grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap:14px;
-      padding:16px 0;
-      border-bottom:1px solid var(--line);
-    }
-    .row b{
-      letter-spacing:.04em;
-      color:rgba(255,255,255,.92);
-      font-weight:600;
-    }
-    .row span{
-      color:rgba(255,255,255,.55);
-      text-align:right;
+    .sectionInner{
+      padding: 22px;
     }
 
-    /* Gallery: FRONT / BACK */
-    .gallery{
-      margin-top:26px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
+    .sectionTitle{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:12px;
+      margin-bottom: 14px;
     }
-    .pCard{
-      background: rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      overflow:hidden;
-      position:relative;
-    }
-    .pCard img{
-      width:100%;
-      display:block;
-      height:auto;
-    }
-    .pLabel{
-      position:absolute;
-      left:16px;
-      bottom:16px;
-      padding:10px 16px;
-      border-radius:999px;
-      background: rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.18);
-      font-size:12px;
+    .sectionTitle h2{
+      margin:0;
+      font-size: 14px;
       letter-spacing:.22em;
       text-transform:uppercase;
+      color: rgba(236,236,239,.74);
+      font-weight: 800;
+    }
+    .sectionTitle .sub{
+      margin:0;
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(236,236,239,.48);
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .shot{
+      position:relative;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.25);
+    }
+    .shot img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    .shotLabel{
+      position:absolute;
+      left:12px;
+      bottom:12px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.38);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.88);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size: 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Specs */
+    .specs{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+      background: rgba(0,0,0,.22);
+    }
+    .specRow{
+      display:grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap:12px;
+      padding: 14px 16px;
+      border-top:1px solid rgba(255,255,255,.07);
+      align-items:center;
+    }
+    .specRow:first-child{ border-top:none; }
+    .specKey{
+      color: rgba(255,255,255,.92);
+      font-weight: 700;
+      letter-spacing:.02em;
+    }
+    .specVal{
+      color: rgba(236,236,239,.65);
+      text-align:right;
+      letter-spacing:.01em;
     }
 
     /* Request access */
-    .accessBox{
-      margin-top:26px;
-      background: rgba(13,13,15,.88);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      padding:26px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-      backdrop-filter: blur(10px);
-    }
-    .accessTop{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:16px;
-    }
-    .accessTop .left{
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.55);
-    }
-    .accessTop .right{
-      font-size:12px;
-      letter-spacing:.10em;
-      color:rgba(255,255,255,.40);
-      text-transform:lowercase;
-    }
-
-    .field{
-      width:100%;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      padding:14px 14px;
-      color:white;
-      font-size:15px;
-      outline:none;
-    }
-    .field::placeholder{ color:rgba(255,255,255,.35); }
     .formGrid{
       display:grid;
+      grid-template-columns: 1fr;
       gap:10px;
-      margin-top:10px;
+      margin-top: 14px;
     }
-    .send{
-      margin-top:12px;
+    .input, textarea{
       width:100%;
-      border-radius:18px;
-      border:1px solid rgba(255,59,31,.35);
-      background: rgba(255,59,31,.12);
-      padding:14px 16px;
-      color:white;
-      font-size:16px;
-      cursor:pointer;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:#fff;
+      outline:none;
+      font-size: 14px;
     }
-    .note{
-      margin-top:12px;
-      color:rgba(255,255,255,.35);
-      font-size:13px;
-      line-height:1.55;
+    textarea{ min-height: 110px; resize: vertical; }
+
+    .formActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-top: 10px;
     }
 
+    .smallNote{
+      margin: 10px 0 0;
+      color: rgba(236,236,239,.55);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* Footer */
     .footer{
-      margin-top:22px;
-      color:rgba(255,255,255,.25);
-      font-size:12px;
+      padding: 22px 6px 30px;
+      text-align:center;
+      color: rgba(236,236,239,.40);
       letter-spacing:.22em;
       text-transform:uppercase;
-      text-align:center;
-      padding:18px 0 0;
+      font-size: 12px;
     }
 
     /* Responsive */
-    @media (max-width: 920px){
-      h1{ font-size:50px; }
-      .grid{ grid-template-columns: 1fr; min-height: unset; }
-      .gallery{ grid-template-columns: 1fr; }
-      .row{ grid-template-columns: 1fr; }
-      .row span{ text-align:left; color:rgba(255,255,255,.60); }
+    @media (max-width: 900px){
+      .grid{
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .price strong{ font-size: 30px; }
     }
   </style>
 </head>
@@ -408,17 +441,11 @@
 <body>
   <div class="wrap">
 
-    <div class="top">
-      <div class="logo">
-        <div>
-          <b>RUSH STATE</b>
-          <span>CONTROLSTATE</span>
-        </div>
+    <div class="topbar">
+      <div class="brand">
+        <span>RUSH<br>STATE</span>
       </div>
-      <div class="pill">
-        <span class="dot"></span>
-        PRIVATE ACCESS ONLY
-      </div>
+      <div class="pill"><span class="dot"></span> PRIVATE ACCESS ONLY</div>
     </div>
 
     <!-- HERO -->
@@ -426,10 +453,8 @@
       <div class="grid">
         <div>
           <div class="kicker">
-            <span>PREMIUM STREETWEAR</span>
-            <span class="sep">•</span>
-            <span>DE / BERLIN</span>
-            <span class="sep">•</span>
+            <span>PREMIUM STREETWEAR</span><span class="sep">•</span>
+            <span>DE / BERLIN</span><span class="sep">•</span>
             <span>DROP 001</span>
           </div>
 
@@ -437,8 +462,7 @@
 
           <p class="lead">
             Тихий запуск. Продукт открыт для просмотра.<br>
-            <b style="color:rgba(255,255,255,.92);font-weight:600;">Заказ — только по доступу.</b><br>
-            Цена фиксирована, без шума. Для тех, кто понимает.
+            <b style="color:#ffffff;">Заказ — только по доступу.</b>
           </p>
 
           <div class="price">
@@ -455,8 +479,8 @@
             </button>
           </div>
 
-          <p class="note" style="max-width:560px;margin-top:18px;">
-            Доступ на покупку открывается вручную по запросу. После подтверждения вы получите возможность оформить заказ.
+          <p class="note">
+            Доступ на покупку открывается вручную. После подтверждения вы получите возможность оформить заказ.
           </p>
         </div>
 
@@ -477,64 +501,104 @@
       </div>
     </section>
 
-    <!-- DETAILS -->
-    <section class="section" id="details">
-      <div class="spec">
-        <h2 class="specTitle">DROP 001 — RS 01</h2>
+    <!-- GALLERY (FRONT / BACK) -->
+    <section class="section" id="gallery">
+      <div class="sectionInner">
+        <div class="sectionTitle">
+          <h2>FRONT / BACK</h2>
+          <p class="sub">drop visuals</p>
+        </div>
 
-        <div class="specGrid">
-          <div class="row"><b>Product</b><span>Black Zip Hoodie</span></div>
-          <div class="row"><b>Fabric</b><span>400 GSM brushed fleece</span></div>
-          <div class="row"><b>Fit</b><span>Slightly oversized</span></div>
-          <div class="row"><b>Hardware</b><span>Silver zip #5</span></div>
-          <div class="row"><b>Front</b><span>Light-grey embroidery + woven patch</span></div>
-          <div class="row"><b>Back</b><span>CONTROLSTATE (40+ cm)</span></div>
-          <div class="row"><b>Price</b><span>119$</span></div>
-          <div class="row"><b>Order</b><span>Access required</span></div>
+        <div class="gallery">
+          <div class="shot">
+            <img src="front.png" alt="Front view">
+            <div class="shotLabel">FRONT</div>
+          </div>
+
+          <div class="shot">
+            <img src="back.png" alt="Back view">
+            <div class="shotLabel">BACK</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FRONT / BACK -->
-    <section class="section" aria-label="product photos">
-      <div class="gallery">
-        <div class="pCard">
-          <img src="front.png" alt="Front view">
-          <div class="pLabel">FRONT</div>
+    <!-- DETAILS / SPECS -->
+    <section class="section" id="details">
+      <div class="sectionInner">
+        <div class="sectionTitle">
+          <h2>INVITE-ONLY</h2>
+          <p class="sub">RUSH STATE</p>
         </div>
-        <div class="pCard">
-          <img src="back.png" alt="Back view">
-          <div class="pLabel">BACK</div>
+
+        <div class="specs">
+          <div class="specRow">
+            <div class="specKey">Drop</div>
+            <div class="specVal">001 / RS 01</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Product</div>
+            <div class="specVal">Black Zip Hoodie</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Fabric</div>
+            <div class="specVal">400 GSM brushed fleece</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Fit</div>
+            <div class="specVal">Slightly oversized</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Hardware</div>
+            <div class="specVal">Silver zip #5</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Front</div>
+            <div class="specVal">Light-grey embroidery + woven patch</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Back</div>
+            <div class="specVal">CONTROLSTATE (40+ cm)</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Price</div>
+            <div class="specVal">119$</div>
+          </div>
+          <div class="specRow">
+            <div class="specKey">Order</div>
+            <div class="specVal">Access required</div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- REQUEST ACCESS -->
     <section class="section" id="invite">
-      <div class="accessBox">
-        <div class="accessTop">
-          <div class="left">REQUEST ACCESS</div>
-          <div class="right">manual review</div>
+      <div class="sectionInner">
+        <div class="sectionTitle">
+          <h2>REQUEST ACCESS</h2>
+          <p class="sub">manual review</p>
         </div>
 
         <form onsubmit="event.preventDefault(); alert('Заявка отправлена (витрина).');">
           <div class="formGrid">
-            <input class="field" placeholder="Имя / ник" required />
-            <input class="field" placeholder="Email / Instagram / Telegram" required />
-            <textarea class="field" placeholder="Коротко: откуда ты и почему тебе нужен доступ" rows="4" required></textarea>
+            <input class="input" placeholder="Имя / ник" required>
+            <input class="input" placeholder="Email / Instagram / Telegram" required>
+            <textarea placeholder="Коротко: откуда ты и почему тебе нужен доступ" required></textarea>
           </div>
 
-          <button class="send" type="submit">Отправить запрос</button>
+          <div class="formActions">
+            <button class="btn btnPrimary" type="submit">Отправить запрос</button>
+          </div>
 
-          <div class="note">
+          <p class="smallNote">
             Это витрина. Оплата и оформление заказа доступны только после подтверждения доступа.
-          </div>
+          </p>
         </form>
       </div>
-
-      <div class="footer">RUSH STATE · Private · Invite only</div>
     </section>
 
+    <div class="footer">RUSH STATE • PRIVATE • INVITE ONLY</div>
   </div>
 </body>
 </html>
