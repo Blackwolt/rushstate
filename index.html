@@ -61,32 +61,36 @@
     }
     .dot{width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 14px rgba(255,77,26,.7);}
 
-    /* Hero */
-    .hero{
-      position:relative;
-      border-radius: calc(var(--radius) + 8px);
-      overflow:hidden;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.15);
-      box-shadow: var(--shadow);
-      min-height: 68vh;
-    }
-    .hero::before{
-      content:"";
-      position:absolute; inset:0;
-      background: url("hero.png") center/cover no-repeat;
-      filter: contrast(1.05) saturate(1.05);
-      transform: scale(1.03);
-      opacity:.55;
-    }
-    .hero::after{
+    /* Hero (less dark) */
+.hero{
+  position:relative;
+  border-radius: calc(var(--radius) + 8px);
+  overflow:hidden;
+  border:1px solid var(--line);
+  background: rgba(0,0,0,.10); /* было .35 */
+  box-shadow: var(--shadow);
+  min-height: 68vh;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: url("hero.png") center/cover no-repeat;
+  filter: contrast(1.05) saturate(1.05);
+  transform: scale(1.03);
+  opacity: .85; /* было .55 — делаем ярче */
+}
+
+/* лёгкое затемнение ТОЛЬКО чтобы текст читался */
+.hero::after{
   content:"";
   position:absolute;
   inset:0;
   background: linear-gradient(90deg,
-    rgba(7,7,8,.45) 0%,
-    rgba(7,7,8,.25) 45%,
-    rgba(7,7,8,.1) 100%);
+    rgba(7,7,8,.18) 0%,
+    rgba(7,7,8,.10) 45%,
+    rgba(7,7,8,.06) 100%);
 }
     }
     .grid{
